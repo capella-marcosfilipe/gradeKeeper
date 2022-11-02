@@ -31,3 +31,11 @@ def menu(lista):
     print(linha())
     opc = leiaInt('\033[32mSua opção: \033[m')
     return opc
+
+def menuCadeiras(dict):
+    cabeçalho('CADEIRAS DE 2022.2')
+    for key, value in dict.items():
+        print(f'\033[33m{key}\033[m - \033[34m{value}\033[m')
+    print(linha())
+    opc = leiaInt('\033[33mSua opção: \033[m')
+    return opc

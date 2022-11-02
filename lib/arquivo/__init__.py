@@ -1,9 +1,9 @@
-from ex115.lib.interface import *
+from lib.interface import *
 
 def arquivoExiste(nome):
     try:
-        a = open(nome, 'rt') # read, text
-        a.close()
+        file = open(nome, 'rt') # read, text
+        file.close()
     except FileNotFoundError:
         return False
     else:
@@ -12,7 +12,7 @@ def arquivoExiste(nome):
 
 def criarArquivo(nome):
     try:
-        a = open(nome, 'wt+') # write, text, + = cria o arquivo
+        file = open(nome, 'wt+') # write, text, + = cria o arquivo
     except:
         print('Houve um erro na criação do arquivo!')
     else:
@@ -21,30 +21,30 @@ def criarArquivo(nome):
 
 def lerArquivo(nome):
     try:
-        a = open(nome, 'rt')
+        file = open(nome, 'rt')
     except:
         print('Erro ao ler arquivo.')
     else:
-        cabeçalho('PESSOAS CADASTRADAS')
-        for linha in a: # Para linha dentro do arquivo...
+        cabeçalho('NOTAS CADASTRADAS')
+        for linha in file: # Para linha dentro do arquivo...
             dado = linha.split(';') # Vou criar dado...
             dado[1] = dado[1].replace('\n', '') # remover o \n
-            print(f'{dado[0]:<30}{dado[1]:>3} anos') # E mostrá-lo na tela.
+            print(f'{dado[0]:<30}{dado[1]:>3}') # E mostrá-lo na tela.
     finally:
-        a.close()
+        file.close()
 
 
-def cadastrar(arq, nome = 'desconhecido', idade = 0):
+def cadastrar(arq, dict, cadeira, nota):
     try:
-        a = open(arq, 'at') # append = colocar coisas no arquivo
+        file = open(arq, 'at') # append = colocar coisas no arquivo
     except:
         print('Houve um erro na abertura do arquivo.')
     else:
         try:
-            a.write(f'{nome};{idade}\n')
+            file.write(f'{dict[cadeira]};{nota}\n')
         except:
             print('Houve um erro na hora de escrever os dados.')
         else:
-            print(f'Novo registro de {nome} adicionado.')
-            a.close()
+            print(f'Nova nota de {dict[cadeira]} adicionada.')
+            file.close()
 
