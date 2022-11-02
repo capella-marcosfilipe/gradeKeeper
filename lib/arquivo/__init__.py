@@ -2,7 +2,7 @@ from lib.interface import *
 
 def arquivoExiste(nome):
     try:
-        file = open(nome, 'rt') # read, text
+        file = open(nome, 'rt')
         file.close()
     except FileNotFoundError:
         return False
@@ -12,7 +12,7 @@ def arquivoExiste(nome):
 
 def criarArquivo(nome):
     try:
-        file = open(nome, 'wt+') # write, text, + = cria o arquivo
+        file = open(nome, 'wt+')
     except:
         print('Houve um erro na criação do arquivo!')
     else:
@@ -36,7 +36,7 @@ def lerArquivo(nome):
 
 def cadastrar(arq, dict, cadeira, nota):
     try:
-        file = open(arq, 'at') # append = colocar coisas no arquivo
+        file = open(arq, 'at')
     except:
         print('Houve um erro na abertura do arquivo.')
     else:
